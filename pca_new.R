@@ -1,0 +1,15 @@
+mydata<-read.csv(file = file.choose())
+summary(mydata)
+View(mydata)
+attach(mydata)
+names(mydata)
+X <- cbind(Wine,Alcohol,Ash,Malic.acid,Phenols)
+summary(X)
+cor(X)
+pcal<-princomp(X, scores=TRUE, cor=TRUE) #principal component analysis on given data matrix
+summary(pcal)
+loadings(pcal) #(component coefficients) correlation coefficients between variables(rows) and factors(columns)
+plot(pcal)
+screeplot(pcal,type="line",main="Screen Plot")
+biplot(pcal)
+pcal$scores[1:10,]
